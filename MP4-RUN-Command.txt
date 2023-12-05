@@ -1,0 +1,33 @@
+--PUT traffic.csv file--
+
+put /home/jsku2/cs425_mp4/data/traffic.csv traffic.csv
+
+--MAPLE traffic.csv--
+
+maple maple-exe 4 bear traffic.csv Radio
+
+--JUICE traffic.csv--
+
+juice juice-exe 4 bear final_juice.csv 0 hash
+
+--SQL SELECT--
+
+SELECT ALL FROM traffic.csv WHERE 'Video|Radio'
+
+******HADOOP COMMANDS******
+
+--START cluster--
+
+/home/jsku2/hadoop/sbin/start-all.sh
+
+--MONITER cluster--
+
+hdfs dfsadmin -report
+
+--VIEW files in cluster--
+
+hdfs dfs -ls -R /
+
+--RUN mapreduce
+
+cd /home/jsku2/cs425_mp4/hadoop && ./run.sh [Interconne]

@@ -1,0 +1,43 @@
+put /home/vfchen2/MP1/MP1_test/machine1.log machine1.log
+# test1
+put /home/vfchen2/mp3/files/file-1.bin file-1.bin
+put /home/vfchen2/mp3/files/file-2.bin file-2.bin
+put /home/vfchen2/mp3/files/file-3.bin file-3.bin
+put /home/vfchen2/mp3/files/file-4.bin file-4.bin
+put /home/vfchen2/mp3/files/file-5.bin file-5.bin
+put /home/vfchen2/mp3/files/file-6.bin file-6.bin
+put /home/vfchen2/mp3/files/file-7.bin file-7.bin
+put /home/vfchen2/mp3/files/file-8.bin file-8.bin
+put /home/vfchen2/mp3/files/file-9.bin file-9.bin
+put /home/vfchen2/mp3/files/file-10.bin file-10.bin
+# test2
+# kill 2 with replica, one without and get a file-1.bin
+# now kill [2,3,5] store (2,3,4,10)
+get file-1.bin /home/vfchen2/MP3_LOCAL/file-1.bin 
+# test 5
+multiread file-2.bin 6
+# test 6
+# test a put large with vm1
+put /home/vfchen2/duplicate_big/file-11.bin file-11.bin
+# test b put small with vm2
+put /home/vfchen2/mp3/files/file-11.bin file-11.bin
+# test c get with vm3 
+get file-11.bin /home/vfchen2/MP3_LOCAL/file-11.bin 
+
+delete machine1.log
+get machine1.log /home/vfchen2/MP3_FILE/machine1.log
+
+scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null vfchen2@fa23-cs425-6301.cs.illinois.edu:/home/vfchen2/MP1/MP1_test/machine1.log /home/vfchen2/MP3_FILE
+
+
+172.22.94.243   hadoop6
+172.22.156.244  hadoop7
+172.22.158.244  hadoop8
+172.22.94.244   hadoop9
+172.22.156.245  hadoop10
+
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub jsku2@hadoop6
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub jsku2@hadoop7
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub jsku2@hadoop8
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub jsku2@hadoop9
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub jsku2@hadoop10
