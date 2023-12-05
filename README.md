@@ -1,8 +1,5 @@
 # Distributed MapReduce Program
 
-## Name
-MP3 Team 73
-
 ## Description
 Distributed MapReduce Program is built on Simple Distributed File System(SDFS). It also has failure dector. 
 1. Failure detector: servers would perform gossiping to communicate information of servers status (Join, Failure, Suspicion). Server would maintain local membership list.
